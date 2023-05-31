@@ -7,6 +7,7 @@ import { Users } from "./components/Users";
 
 function App() {
   const [users, setUsers] = React.useState([]);
+  const [invites, setInvites] = React.useState([]);
   const [isLoading, setLoading] = React.useState(true);
   const [searchValue, setSearchValue] = React.useState("");
 
@@ -27,6 +28,15 @@ function App() {
     setSearchValue(e.target.value);
   };
 
+//   перевіряю чи є користувач в масиві запрошених чи ні і вирішувати додавати чи видаляти  його в масиві
+  const onClickInvite = (id) => {
+	if (invites.includes(id)) {
+		setInvites(prev => prev.filter(_id => _id != id))
+	} else {
+		setInvites(prev => [...prev, id])
+	}
+  }
+
   return (
     <div className="App">
       <Users
@@ -34,6 +44,8 @@ function App() {
         searchValue={searchValue}
         items={users}
         isLoading={isLoading}
+		  invites={invites}
+		  onClickInvite={onClickInvite}
       />
       {/* <Success /> */}
     </div>
