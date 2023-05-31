@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Success = ({ count }) => {
   return (
-    <div class="success-block">
+    <div className="success-block">
       <img src="/assets/success.svg" alt="Success" />
       <h3>Успішно!</h3>
       <p>Всім {count} користувачам відправлено запрошення.</p>
